@@ -126,6 +126,10 @@ END
 
 IDR_tbGfxm              BITMAP                  "res\\toolbar1.bmp"
 
+IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
+
+IDR_EXPLORER            BITMAP                  "res\\toolbar3.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -137,6 +141,11 @@ BEGIN
     BUTTON      ID_BUTTON32783
     BUTTON      ID_BUTTON32780
     BUTTON      ID_BUTTON32781
+END
+
+IDR_EXPLORER TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_BUTTON32784
 END
 
 #endif    // Chinese (Simplified, PRC) resources

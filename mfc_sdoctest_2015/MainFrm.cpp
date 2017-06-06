@@ -98,6 +98,12 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// enable quick (Alt+drag) toolbar customization
 	//CMFCToolBar::EnableQuickCustomization();
 
+	BOOL bRet = m_dp1.Create(_T("dp1"), this, CRect(0, 0, 200, 100), TRUE, ID_dp1,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI);
+	//DWORD dwErr = GetLastError();
+	m_dp1.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_dp1);
+
 	return 0;
 }
 
@@ -111,7 +117,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	cs.style =/* WS_OVERLAPPED | WS_CAPTION | FWS_ADDTOTITLE
 		 | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX*/
 	WS_OVERLAPPEDWINDOW;
-	cs.hMenu = NULL;
+	//cs.hMenu = NULL;
 
 	return TRUE;
 }

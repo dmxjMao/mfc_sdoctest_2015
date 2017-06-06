@@ -185,6 +185,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DockPane1.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="mfc_sdoctest_2015.h" />
     <ClInclude Include="mfc_sdoctest_2015Doc.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DockPane1.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="mfc_sdoctest_2015.cpp" />
     <ClCompile Include="mfc_sdoctest_2015Doc.cpp" />
@@ -209,11 +211,13 @@
     <ResourceCompile Include="mfc_sdoctest_2015.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\fileview_hc.bmp" />
     <Image Include="res\mfc_sdoctest_2015.ico" />
     <Image Include="res\mfc_sdoctest_2015Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
     <Image Include="res\toolbar1.bmp" />
     <Image Include="res\Toolbar256.bmp" />
+    <Image Include="res\toolbar3.bmp" />
     <Image Include="UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>

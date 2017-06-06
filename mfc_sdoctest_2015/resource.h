@@ -17,6 +17,10 @@
 #define IDR_TOOLBAR1                    310
 #define IDR_TOOLBAR2                    312
 #define IDR_tbGfxm                      312
+#define ID_dp1                          313
+#define IDB_FILE_VIEW_24                314
+#define IDR_TOOLBAR3                    315
+#define IDR_EXPLORER                    315
 #define ID_GFXM_Shifu                   32771
 #define ID_GFXM_abao                    32772
 #define ID_GFXM_huniu                   32773
@@ -28,13 +32,14 @@
 #define ID_BUTTON32783                  32779
 #define ID_BUTTON32780                  32780
 #define ID_BUTTON32781                  32781
+#define ID_BUTTON32784                  32783
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        314
-#define _APS_NEXT_COMMAND_VALUE         32782
+#define _APS_NEXT_RESOURCE_VALUE        317
+#define _APS_NEXT_COMMAND_VALUE         32784
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
