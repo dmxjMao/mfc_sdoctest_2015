@@ -77,7 +77,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// TODO: Delete these five lines if you don't want the toolbar and menubar to be dockable
 	//m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
 	////m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
-	//EnableDocking(CBRS_ALIGN_ANY);
+	EnableDocking(CBRS_ALIGN_ANY);
 	//DockPane(&m_wndMenuBar);
 	//DockPane(&m_wndToolBar);
 	//DockPane(&m_tbGfxm);
@@ -85,7 +85,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 
 	// enable Visual Studio 2005 style docking window behavior
-	CDockingManager::SetDockingMode(DT_SMART);
+	//CDockingManager::SetDockingMode(DT_SMART);
 	// enable Visual Studio 2005 style docking window auto-hide behavior
 	//EnableAutoHidePanes(CBRS_ALIGN_ANY);
 
@@ -97,12 +97,23 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	// enable quick (Alt+drag) toolbar customization
 	//CMFCToolBar::EnableQuickCustomization();
+	BOOL b = CMFCToolBar::AddToolBarForImageCollection(IDR_MENU_IMAGES, IDB_MENU_IMAGES_24);
 
-	BOOL bRet = m_dp1.Create(_T("dp1"), this, CRect(0, 0, 200, 100), TRUE, ID_dp1,
-		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI);
-	//DWORD dwErr = GetLastError();
+
+	BOOL bRet = m_dp1.Create(_T("dp1"), this, CRect(0, 0, 200, 500), TRUE, ID_dp1,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS 
+		| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
+	//m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
 	m_dp1.EnableDocking(CBRS_ALIGN_ANY);
 	DockPane(&m_dp1);
+
+
+	bRet = m_dp2.Create(_T("dp2"), this, CRect(0, 0, 200, 20), TRUE, ID_dp2,
+		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+		| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
+	//m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
+	m_dp2.EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(&m_dp2);
 
 	return 0;
 }

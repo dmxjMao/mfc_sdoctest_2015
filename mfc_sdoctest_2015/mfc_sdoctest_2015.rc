@@ -77,6 +77,23 @@ END
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 #pragma code_page(936)
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_POPUP_SORT MENU
+BEGIN
+    POPUP "Sorting"
+    BEGIN
+        MENUITEM "Sort Alphabeticaly",          ID_SORTING_SORTALPHABETICALY
+        MENUITEM "Sort by Type",                ID_SORTING_SORTBYTYPE
+        MENUITEM "Sort by Access",              ID_SORTING_SORTBYACCESS
+        MENUITEM "Group by type",               ID_SORTING_GROUPBY
+    END
+END
+
+
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -130,6 +147,18 @@ IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
 
 IDR_EXPLORER            BITMAP                  "res\\toolbar3.bmp"
 
+IDB_EXPLORER_24         BITMAP                  "res\\explorer_24.bmp"
+
+IDR_SORT                BITMAP                  "res\\toolbar4.bmp"
+
+IDB_CLASS_VIEW_24       BITMAP                  "res\\classview_hc.bmp"
+
+IDB_SORT_24             BITMAP                  "res\\sort_hc.bmp"
+
+IDR_MENU_IMAGES         BITMAP                  "res\\bmp00001.bmp"
+
+IDB_MENU_IMAGES_24      BITMAP                  "res\\menuimages_hc.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -145,7 +174,26 @@ END
 
 IDR_EXPLORER TOOLBAR 16, 15
 BEGIN
-    BUTTON      ID_BUTTON32784
+    BUTTON      ID_PROPERTIES
+END
+
+IDR_SORT TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_SORT_MENU
+    BUTTON      ID_NEW_FOLDER
+END
+
+IDR_MENU_IMAGES TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_WINDOW_MANAGER
+    SEPARATOR
+    BUTTON      ID_WINDOW_CASCADE
+    BUTTON      ID_WINDOW_TILE_HORZ
+    BUTTON      ID_TOOLS_MACRO
+    BUTTON      ID_SORTING_SORTALPHABETICALY
+    BUTTON      ID_SORTING_SORTBYTYPE
+    BUTTON      ID_SORTING_SORTBYACCESS
+    BUTTON      ID_SORTING_GROUPBY
 END
 
 #endif    // Chinese (Simplified, PRC) resources

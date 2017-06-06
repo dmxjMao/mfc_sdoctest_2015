@@ -5,6 +5,7 @@
 #pragma once
 
 #include "DockPane1.h"
+#include "DockPane2.h"
 
 class CMainFrame : public CFrameWndEx
 {
@@ -35,7 +36,9 @@ protected:  // control bar embedded members
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;
 	CMFCToolBar		  m_tbGfxm;
+	
 	CDockPane1		  m_dp1;
+	CDockPane2		  m_dp2;
 
 // Generated message map functions
 protected:

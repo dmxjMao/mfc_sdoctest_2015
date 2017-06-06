@@ -186,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DockPane1.h" />
+    <ClInclude Include="DockPane2.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="mfc_sdoctest_2015.h" />
     <ClInclude Include="mfc_sdoctest_2015Doc.h" />
@@ -196,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DockPane1.cpp" />
+    <ClCompile Include="DockPane2.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="mfc_sdoctest_2015.cpp" />
     <ClCompile Include="mfc_sdoctest_2015Doc.cpp" />
@@ -211,13 +213,21 @@
     <ResourceCompile Include="mfc_sdoctest_2015.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\classview_hc.bmp" />
+    <Image Include="res\explorer_24.bmp" />
+    <Image Include="res\fileview.bmp" />
     <Image Include="res\fileview_hc.bmp" />
+    <Image Include="res\menuimages_hc.bmp" />
     <Image Include="res\mfc_sdoctest_2015.ico" />
     <Image Include="res\mfc_sdoctest_2015Doc.ico" />
+    <Image Include="res\sort_hc.bmp" />
     <Image Include="res\Toolbar.bmp" />
     <Image Include="res\toolbar1.bmp" />
     <Image Include="res\Toolbar256.bmp" />
     <Image Include="res\toolbar3.bmp" />
+    <Image Include="res\toolbar4.bmp" />
     <Image Include="UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>
