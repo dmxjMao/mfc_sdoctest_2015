@@ -45,6 +45,18 @@
     <ClInclude Include="DockPane2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DockPane3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DpPopupDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleDlgDockPane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexDlgDockPane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mfc_sdoctest_2015.cpp">
@@ -66,6 +78,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DockPane2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DockPane3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DpPopupDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleDlgDockPane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ComplexDlgDockPane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

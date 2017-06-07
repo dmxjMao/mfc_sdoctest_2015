@@ -185,23 +185,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ComplexDlgDockPane.h" />
     <ClInclude Include="DockPane1.h" />
     <ClInclude Include="DockPane2.h" />
+    <ClInclude Include="DockPane3.h" />
+    <ClInclude Include="DpPopupDlg.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="mfc_sdoctest_2015.h" />
     <ClInclude Include="mfc_sdoctest_2015Doc.h" />
     <ClInclude Include="mfc_sdoctest_2015View.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SimpleDlgDockPane.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ComplexDlgDockPane.cpp" />
     <ClCompile Include="DockPane1.cpp" />
     <ClCompile Include="DockPane2.cpp" />
+    <ClCompile Include="DockPane3.cpp" />
+    <ClCompile Include="DpPopupDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="mfc_sdoctest_2015.cpp" />
     <ClCompile Include="mfc_sdoctest_2015Doc.cpp" />
     <ClCompile Include="mfc_sdoctest_2015View.cpp" />
+    <ClCompile Include="SimpleDlgDockPane.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

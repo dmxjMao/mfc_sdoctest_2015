@@ -7,9 +7,15 @@
 
 #include "MainFrm.h"
 
+#include "SimpleDlgDockPane.h"
+#include "ComplexDlgDockPane.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
+#define IDC_SimpleDlgPane		100
+#define IDC_ComplexDlgPane		101
 
 // CMainFrame
 
@@ -91,6 +97,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	// set the visual manager used to draw all user interface elements
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerVS2008));
+	//CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerOffice2007));
 
 	// Enable toolbar and docking window menu replacement
 	//EnablePaneMenu(TRUE, ID_VIEW_CUSTOMIZE, strCustomize, ID_VIEW_TOOLBAR);
@@ -100,20 +107,50 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	BOOL b = CMFCToolBar::AddToolBarForImageCollection(IDR_MENU_IMAGES, IDB_MENU_IMAGES_24);
 
 
-	BOOL bRet = m_dp1.Create(_T("dp1"), this, CRect(0, 0, 200, 500), TRUE, ID_dp1,
-		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS 
-		| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
-	//m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
-	m_dp1.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_dp1);
+	//BOOL bRet = m_dp1.Create(_T("dp1"), this, CRect(0, 0, 200, 500), TRUE, ID_dp1,
+	//	WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS 
+	//	| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
+	////m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
+	//m_dp1.EnableDocking(CBRS_ALIGN_ANY);
+	//DockPane(&m_dp1);
 
 
-	bRet = m_dp2.Create(_T("dp2"), this, CRect(0, 0, 200, 20), TRUE, ID_dp2,
-		WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
-		| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
-	//m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
-	m_dp2.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_dp2);
+	//bRet = m_dp2.Create(_T("dp2"), this, CRect(0, 0, 200, 500), TRUE, ID_dp2,
+	//	WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+	//	| WS_CLIPCHILDREN | CBRS_LEFT/*| CBRS_FLOAT_MULTI*/);
+	////m_dp1.SetPaneStyle(m_dp1.GetPaneStyle() | AFX_CBRS_AUTOHIDE);
+	//m_dp2.EnableDocking(CBRS_ALIGN_ANY);
+	////DockPane(&m_dp2);
+	//CDockablePane* pTabbedBar = NULL;
+	//m_dp2.AttachToTabWnd(&m_dp1, DM_SHOW, TRUE, &pTabbedBar);
+
+	//bRet = m_dp3.Create(_T("dp3"), this, CRect(0, 0, 100, 100), TRUE, ID_dp3,
+	//	WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+	//	| WS_CLIPCHILDREN | CBRS_BOTTOM);
+	//m_dp3.EnableDocking(CBRS_ALIGN_BOTTOM);
+	//DockPane(&m_dp3);
+
+	if(!m_simpledlg_dp)
+		m_simpledlg_dp = std::make_shared<CSimpleDlgDockPane>();
+	DWORD style = WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT;
+	BOOL bRet = m_simpledlg_dp->Create(_T("simple dialog pane"), this, CRect(0, 0, 200, 500), 
+		TRUE, IDC_SimpleDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
+	m_simpledlg_dp->EnableDocking(CBRS_ALIGN_ANY);
+	DockPane(m_simpledlg_dp.get());
+	m_simpledlg_dp->ShowPane(TRUE, FALSE, TRUE);
+	//RecalcLayout();
+
+	if (!m_complexdlg_dp)
+		m_complexdlg_dp = std::make_shared<CComplexDlgDockPane>();
+	//AFX_CBRS_AUTO_ROLLUP
+	bRet = m_complexdlg_dp->Create(_T("complex dialog pane"), this, CRect(0, 0, 200, 500),
+		TRUE, IDC_ComplexDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
+	m_complexdlg_dp->EnableDocking(CBRS_ALIGN_ANY);
+	//DockPane(m_complexdlg_dp.get());
+	CDockablePane* pTabbedBar = NULL;
+	m_complexdlg_dp->AttachToTabWnd(m_simpledlg_dp.get(), DM_SHOW, FALSE, &pTabbedBar);
+	//m_complexdlg_dp->ShowPane(TRUE, FALSE, TRUE);
+	//RecalcLayout();
 
 	return 0;
 }

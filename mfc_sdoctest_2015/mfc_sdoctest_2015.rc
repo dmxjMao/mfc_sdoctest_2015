@@ -196,6 +196,111 @@ BEGIN
     BUTTON      ID_SORTING_GROUPBY
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_dp_simple DIALOGEX 0, 0, 219, 157
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_STATIC,57,41,104,60
+    CONTROL         "Check1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,15,39,10
+END
+
+IDD_dp_complex DIALOGEX 0, 0, 258, 323
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Button1",IDC_BUTTON1,7,249,30,14
+    CONTROL         "Check1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,23,39,10
+    GROUPBOX        "Static",IDC_STATIC,7,7,244,102
+    EDITTEXT        IDC_EDIT1,63,21,72,14,ES_AUTOHSCROLL
+    CONTROL         "Check2",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,45,39,10
+    EDITTEXT        IDC_EDIT2,64,42,72,14,ES_AUTOHSCROLL
+    CONTROL         "Radio1",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,7,73,38,10
+    CONTROL         "Radio2",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,7,85,38,10
+    CONTROL         "Radio3",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,7,98,38,10
+    CONTROL         "Radio1",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,57,73,38,10
+    CONTROL         "Radio2",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,57,85,38,10
+    CONTROL         "Radio3",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,57,98,38,10
+    LISTBOX         IDC_LIST1,152,18,89,84,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Static",IDC_STATIC,7,119,244,111
+    COMBOBOX        IDC_COMBO1,7,137,73,44,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT3,7,162,244,53,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_STATIC,118,138,80,11
+    PUSHBUTTON      "Button1",IDC_BUTTON2,42,249,30,14
+    PUSHBUTTON      "Button1",IDC_BUTTON3,79,249,30,14
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,7,274,101,14
+END
+
+IDD_popup DIALOGEX 0, 0, 309, 178
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "s",IDC_STATIC,30,33,207,84
+    PUSHBUTTON      "ok",IDC_BUTTON1,158,145,22,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_dp_simple, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 150
+    END
+
+    IDD_dp_complex, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 251
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 316
+    END
+
+    IDD_popup, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 171
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_dp_simple AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_dp_complex AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_popup AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 #endif    // Chinese (Simplified, PRC) resources
 /////////////////////////////////////////////////////////////////////////////
 

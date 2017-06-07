@@ -30,6 +30,28 @@
 #define ID_dp2                          325
 #define IDR_MENU_IMAGES                 326
 #define IDB_MENU_IMAGES_24              328
+#define ID_dp3                          329
+#define IDD_dp_simple                   330
+#define IDD_dp_complex                  332
+#define IDD_popup                       334
+#define IDC_BUTTON1                     1000
+#define IDC_CHECK1                      1001
+#define IDC_BUTTON4                     1001
+#define IDC_EDIT1                       1002
+#define IDC_CHECK2                      1003
+#define IDC_EDIT2                       1004
+#define IDC_RADIO1                      1005
+#define IDC_RADIO2                      1006
+#define IDC_RADIO3                      1007
+#define IDC_RADIO4                      1008
+#define IDC_RADIO5                      1009
+#define IDC_RADIO6                      1010
+#define IDC_LIST1                       1011
+#define IDC_COMBO1                      1012
+#define IDC_EDIT3                       1013
+#define IDC_BUTTON2                     1014
+#define IDC_BUTTON3                     1015
+#define IDC_PROGRESS1                   1016
 #define ID_GFXM_Shifu                   32771
 #define ID_GFXM_abao                    32772
 #define ID_GFXM_huniu                   32773
@@ -57,9 +79,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        329
+#define _APS_NEXT_RESOURCE_VALUE        336
 #define _APS_NEXT_COMMAND_VALUE         32798
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_CONTROL_VALUE         1017
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

@@ -6,6 +6,9 @@
 
 #include "DockPane1.h"
 #include "DockPane2.h"
+#include "DockPane3.h"
+
+#include <memory>
 
 class CMainFrame : public CFrameWndEx
 {
@@ -39,6 +42,10 @@ protected:  // control bar embedded members
 	
 	CDockPane1		  m_dp1;
 	CDockPane2		  m_dp2;
+	CDockPane3		  m_dp3;
+
+	std::shared_ptr<CDockablePane> m_simpledlg_dp;
+	std::shared_ptr<CDockablePane> m_complexdlg_dp;
 
 // Generated message map functions
 protected:
