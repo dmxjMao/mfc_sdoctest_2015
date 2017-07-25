@@ -24,7 +24,15 @@ IMPLEMENT_DYNCREATE(Cmfc_sdoctest_2015View, CView)
 BEGIN_MESSAGE_MAP(Cmfc_sdoctest_2015View, CView)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
+	ON_COMMAND_RANGE(ID_SORTING_RED, ID_SORTING_BLUE+1, OnColor)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_SORTING_RED, ID_SORTING_BLUE+1, OnUpdateColor)
 END_MESSAGE_MAP()
+
+const COLORREF Cmfc_sdoctest_2015View::m_colors[3] = {
+	RGB(255,0,0),
+	RGB(0,255,0),
+	RGB(0,0,255)
+};
 
 // Cmfc_sdoctest_2015View construction/destruction
 
@@ -64,11 +72,19 @@ void Cmfc_sdoctest_2015View::OnRButtonUp(UINT /* nFlags */, CPoint point)
 	OnContextMenu(this, point);
 }
 
-void Cmfc_sdoctest_2015View::OnContextMenu(CWnd* /* pWnd */, CPoint point)
+void Cmfc_sdoctest_2015View::OnContextMenu(CWnd* /* pWnd */, CPoint pt)
 {
 #ifndef SHARED_HANDLERS
 	//theApp.GetContextMenuManager()->ShowPopupMenu(IDR_POPUP_EDIT, point.x, point.y, this, TRUE);
 #endif
+	CMenu m;
+	m.LoadMenu(IDR_POPUP_SORT);
+	CMenu* pMenu = m.GetSubMenu(0);
+
+	for (int i = 0; i < 3; ++i) {
+		pMenu->ModifyMenu(ID_SORTING_RED + i, MF_BYCOMMAND | MF_OWNERDRAW, ID_SORTING_RED + i);
+	}
+	pMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON, pt.x, pt.y, AfxGetMainWnd());
 }
 
 
@@ -94,3 +110,14 @@ Cmfc_sdoctest_2015Doc* Cmfc_sdoctest_2015View::GetDocument() const // non-debug 
 
 
 // Cmfc_sdoctest_2015View message handlers
+void Cmfc_sdoctest_2015View::OnColor(UINT nID)
+{
+	m_nColor = nID - ID_SORTING_RED;
+	Invalidate();
+}
+
+void Cmfc_sdoctest_2015View::OnUpdateColor(CCmdUI* pCmdUI)
+{
+	int nCheck = pCmdUI->m_nID - ID_SORTING_RED == m_nColor;
+	pCmdUI->SetCheck(nCheck);
+}

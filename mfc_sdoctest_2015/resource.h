@@ -74,13 +74,17 @@
 #define ID_WINDOW_MANAGER               32790
 #define ID_TOOLS_MACRO                  32793
 #define ID_SORTING_GROUPBYTYPE          32797
+#define ID_SORTING_RED                  32798
+#define ID_SORTING_GREEN                32799
+#define ID_SORTING_BLUE                 32800
+
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        336
-#define _APS_NEXT_COMMAND_VALUE         32798
+#define _APS_NEXT_COMMAND_VALUE         32801
 #define _APS_NEXT_CONTROL_VALUE         1017
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

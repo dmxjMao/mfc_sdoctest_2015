@@ -75,6 +75,15 @@ BOOL Cmfc_sdoctest_2015App::InitInstance()
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
+
+	//Ê¹²Ëµ¥×Ô»æ
+	CMenu m;
+	m.LoadMenu(IDR_POPUP_SORT);
+	//int nMenuCnt = m.GetSubMenu(0)->GetMenuItemCount();
+	for (int i = 0; i < 3; ++i) {
+		m.ModifyMenu(ID_SORTING_RED + i, MF_OWNERDRAW, ID_SORTING_RED + i);
+	}
+
 	return TRUE;
 }
 

@@ -14,6 +14,7 @@ protected: // create from serialization only
 // Attributes
 public:
 	Cmfc_sdoctest_2015Doc* GetDocument() const;
+	static const COLORREF m_colors[3];
 
 // Operations
 public:
@@ -33,12 +34,15 @@ public:
 #endif
 
 protected:
+	int m_nColor = 0;
 
 // Generated message map functions
 protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
+	afx_msg void OnColor(UINT nID);
+	afx_msg void OnUpdateColor(CCmdUI*);
 	DECLARE_MESSAGE_MAP()
 };
 

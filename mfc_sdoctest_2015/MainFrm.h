@@ -54,6 +54,10 @@ protected:
 	afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
 	DECLARE_MESSAGE_MAP()
 
+public:
+	afx_msg void OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct);
+	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
+	//afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 };
 
 

@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "mfc_sdoctest_2015.h"
 
+//#include "mfc_sdoctest_2015View.h"
 #include "MainFrm.h"
 
 #include "SimpleDlgDockPane.h"
@@ -17,6 +18,10 @@
 #define IDC_SimpleDlgPane		100
 #define IDC_ComplexDlgPane		101
 
+#if !defined(OBM_CHECK)
+#define OBM_CHECK 32760
+#endif
+
 // CMainFrame
 
 IMPLEMENT_DYNCREATE(CMainFrame, CFrameWndEx)
@@ -25,6 +30,9 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_WM_CREATE()
 	ON_COMMAND(ID_VIEW_CUSTOMIZE, &CMainFrame::OnViewCustomize)
 	ON_REGISTERED_MESSAGE(AFX_WM_CREATETOOLBAR, &CMainFrame::OnToolbarCreateNew)
+	ON_WM_MEASUREITEM()
+	ON_WM_DRAWITEM()
+	//ON_WM_CONTEXTMENU()
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -42,6 +50,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
+
 
 	//BOOL bNameValid;
 
@@ -130,25 +139,25 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	//m_dp3.EnableDocking(CBRS_ALIGN_BOTTOM);
 	//DockPane(&m_dp3);
 
-	if(!m_simpledlg_dp)
-		m_simpledlg_dp = std::make_shared<CSimpleDlgDockPane>();
-	DWORD style = WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT;
-	BOOL bRet = m_simpledlg_dp->Create(_T("simple dialog pane"), this, CRect(0, 0, 200, 500), 
-		TRUE, IDC_SimpleDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
-	m_simpledlg_dp->EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(m_simpledlg_dp.get());
-	m_simpledlg_dp->ShowPane(TRUE, FALSE, TRUE);
-	//RecalcLayout();
+	//if(!m_simpledlg_dp)
+	//	m_simpledlg_dp = std::make_shared<CSimpleDlgDockPane>();
+	//DWORD style = WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT;
+	//BOOL bRet = m_simpledlg_dp->Create(_T("simple dialog pane"), this, CRect(0, 0, 200, 500), 
+	//	TRUE, IDC_SimpleDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
+	//m_simpledlg_dp->EnableDocking(CBRS_ALIGN_ANY);
+	//DockPane(m_simpledlg_dp.get());
+	//m_simpledlg_dp->ShowPane(TRUE, FALSE, TRUE);
+	////RecalcLayout();
 
-	if (!m_complexdlg_dp)
-		m_complexdlg_dp = std::make_shared<CComplexDlgDockPane>();
-	//AFX_CBRS_AUTO_ROLLUP
-	bRet = m_complexdlg_dp->Create(_T("complex dialog pane"), this, CRect(0, 0, 200, 500),
-		TRUE, IDC_ComplexDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
-	m_complexdlg_dp->EnableDocking(CBRS_ALIGN_ANY);
-	//DockPane(m_complexdlg_dp.get());
-	CDockablePane* pTabbedBar = NULL;
-	m_complexdlg_dp->AttachToTabWnd(m_simpledlg_dp.get(), DM_SHOW, FALSE, &pTabbedBar);
+	//if (!m_complexdlg_dp)
+	//	m_complexdlg_dp = std::make_shared<CComplexDlgDockPane>();
+	////AFX_CBRS_AUTO_ROLLUP
+	//bRet = m_complexdlg_dp->Create(_T("complex dialog pane"), this, CRect(0, 0, 200, 500),
+	//	TRUE, IDC_ComplexDlgPane, style, AFX_CBRS_OUTLOOK_TABS);
+	//m_complexdlg_dp->EnableDocking(CBRS_ALIGN_ANY);
+	////DockPane(m_complexdlg_dp.get());
+	//CDockablePane* pTabbedBar = NULL;
+	//m_complexdlg_dp->AttachToTabWnd(m_simpledlg_dp.get(), DM_SHOW, FALSE, &pTabbedBar);
 	//m_complexdlg_dp->ShowPane(TRUE, FALSE, TRUE);
 	//RecalcLayout();
 
@@ -213,3 +222,72 @@ LRESULT CMainFrame::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 	return lres;
 }
 
+
+
+void CMainFrame::OnMeasureItem(int nIDCtl, LPMEASUREITEMSTRUCT lpMeasureItemStruct)
+{
+	// TODO: Add your message handler code here and/or call default
+	if (ODT_MENU == lpMeasureItemStruct->CtlType) {
+		lpMeasureItemStruct->itemWidth = ::GetSystemMetrics(SM_CYMENU);
+		lpMeasureItemStruct->itemHeight = ::GetSystemMetrics(SM_CYMENU);
+	}
+
+	//CFrameWndEx::OnMeasureItem(nIDCtl, lpMeasureItemStruct);
+}
+
+
+
+void CMainFrame::OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpdis)
+{
+	// TODO: Add your message handler code here and/or call default
+	BITMAP bm;
+	CBitmap bitmap;
+	bitmap.LoadOEMBitmap(OBM_CHECK);
+	bitmap.GetObject(sizeof(bm), &bm);
+
+	CDC dc;
+	dc.Attach(lpdis->hDC);
+
+	CBrush* pBrush = new CBrush(::GetSysColor((lpdis->itemState & ODS_SELECTED) ? COLOR_HIGHLIGHT : COLOR_MENU));
+	dc.FrameRect(&(lpdis->rcItem), pBrush);
+	delete pBrush; pBrush = 0;
+
+	static COLORREF colors[3] = {
+		RGB(255,0,0),
+		RGB(0,255,0),
+		RGB(0,0,255)
+	};
+
+	if (lpdis->itemState & ODS_CHECKED) {
+		CDC dcMem;
+		dcMem.CreateCompatibleDC(&dc);
+		CBitmap* pOldBitmap = dcMem.SelectObject(&bitmap);
+		dc.BitBlt(lpdis->rcItem.left + 4, lpdis->rcItem.top +
+			(((lpdis->rcItem.bottom - lpdis->rcItem.top) - bm.bmHeight) / 2),
+			bm.bmWidth, bm.bmHeight, &dcMem, 0, 0, SRCCOPY);
+		dcMem.SelectObject(pOldBitmap);
+	}
+
+	UINT itemID = lpdis->itemID;
+	//Cmfc_sdoctest_2015View* pView = (Cmfc_sdoctest_2015View*)GetActiveView();
+	pBrush = new CBrush(colors[itemID - ID_SORTING_RED]/*pView->m_colors[itemID - ID_SORTING_RED]*/);
+	CRect rect = lpdis->rcItem;
+	rect.DeflateRect(6, 4);
+	rect.left += bm.bmWidth;
+	dc.FillRect(rect, pBrush);
+	delete pBrush; pBrush = 0;
+
+	dc.Detach();
+	//CFrameWndEx::OnDrawItem(nIDCtl, lpdis);
+}
+
+
+//void CMainFrame::OnContextMenu(CWnd* /*pWnd*/, CPoint pt)
+//{
+//	// TODO: Add your message handler code here
+//	CMenu m;
+//	m.LoadMenu(IDR_POPUP_SORT);
+//	CMenu* pMenu = m.GetSubMenu(0);
+//
+//	pMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON, pt.x, pt.y, AfxGetMainWnd());
+//}
